@@ -1,0 +1,53 @@
+{
+  "version": "1.0.0",
+  "rules": [
+    {
+      "id": "require-https",
+      "name": "Require HTTPS",
+      "description": "All sensitive requests should use HTTPS",
+      "severity": "high",
+      "category": "network",
+      "enabled": true
+    },
+    {
+      "id": "no-inline-secrets",
+      "name": "No Inline Secrets",
+      "description": "API keys and secrets should not be in client-side code",
+      "severity": "critical",
+      "category": "secrets",
+      "enabled": true
+    },
+    {
+      "id": "secure-cookies",
+      "name": "Secure Cookies",
+      "description": "Session cookies must have Secure, HttpOnly, and SameSite attributes",
+      "severity": "high",
+      "category": "storage",
+      "enabled": true
+    },
+    {
+      "id": "security-headers",
+      "name": "Security Headers Required",
+      "description": "CSP, HSTS, X-Frame-Options and other security headers must be present",
+      "severity": "high",
+      "category": "headers",
+      "enabled": true
+    },
+    {
+      "id": "no-jwt-storage",
+      "name": "No JWT in LocalStorage",
+      "description": "JWT tokens should not be stored in localStorage/sessionStorage",
+      "severity": "medium",
+      "category": "authentication",
+      "enabled": true
+    },
+    {
+      "id": "no-pii-exposure",
+      "name": "No PII Exposure",
+      "description": "Personal identifiable information should not be exposed in responses",
+      "severity": "high",
+      "category": "data-exposure",
+      "enabled": true
+    }
+  ]
+}

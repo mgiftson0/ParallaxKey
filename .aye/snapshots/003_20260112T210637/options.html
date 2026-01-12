@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VaultGuard Settings</title>
+  <link rel="stylesheet" href="../styles/output.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <div class="max-w-4xl mx-auto py-8 px-4">
+    <!-- Header -->
+    <header class="mb-8">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-10 h-10 bg-vault-600 rounded-xl flex items-center justify-center">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-2xl font-bold text-gray-900">VaultGuard Settings</h1>
+          <p class="text-sm text-gray-500">Configure your security scanner</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Tabs -->
+    <div class="mb-6 border-b border-gray-200">
+      <nav class="flex gap-4">
+        <button class="tab tab-active" data-tab="general">General</button>
+        <button class="tab" data-tab="scanners">Scanners</button>
+        <button class="tab" data-tab="notifications">Notifications</button>
+        <button class="tab" data-tab="privacy">Privacy</button>
+        <button class="tab" data-tab="about">About</button>
+      </nav>
+    </div>
+
+    <!-- Tab Content -->
+    <div id="tab-content">
+      <!-- General Tab -->
+      <div id="tab-general" class="tab-panel space-y-6">
+        <div class="card p-6">
+          <h3 class="section-title mb-4">Appearance</h3>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Theme</label>
+              <select id="theme" class="select w-full max-w-xs">
+                <option value="system">System</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+              </select>
+            </div>
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-700">Compact Mode</p>
+                <p class="text-xs text-gray-500">Use smaller UI elements</p>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="compact-mode" class="sr-only peer">
+                <div class="w-11 h-6 bg-gray-200 peer-focus:ring-2 peer-focus:ring-vault-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-vault-600"></div>
+              </label>
+            </div>
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-700">Show Badge Count</p>
+                <p class="text-xs text-gray-500">Display finding count on icon</p>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="badge-count" class="sr-only peer" checked>
+                <div class="w-11 h-6 bg-gray-200 peer-focus:ring-2 peer-focus:ring-vault-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-vault-600"></div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <h3 class="section-title mb-4">Scanning Behavior</h3>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-700">Auto-scan on Navigation</p>
+                <p class="text-xs text-gray-500">Automatically scan when visiting pages</p>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="auto-scan" class="sr-only peer">
+                <div class="w-11 h-6 bg-gray-200 peer-focus:ring-2 peer-focus:ring-vault-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-vault-600"></div>
+              </label>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Default Scan Profile</label>
+              <select id="scan-profile" class="select w-full max-w-xs">
+                <option value="quick">Quick Scan</option>
+                <option value="standard" selected>Standard Scan</option>
+                <option value="deep">Deep Scan</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <h3 class="section-title mb-4">Data Management</h3>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Findings Retention</label>
+              <select id="retention" class="select w-full max-w-xs">
+                <option value="7">7 days</option>
+                <option value="30" selected>30 days</option>
+                <option value="90">90 days</option>
+                <option value="365">1 year</option>
+              </select>
+            </div>
+            <div class="pt-2">
+              <button id="clear-all-data" class="btn-danger">Clear All Data</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scanners Tab -->
+      <div id="tab-scanners" class="tab-panel hidden space-y-6">
+        <div class="card p-6">
+          <h3 class="section-title mb-4">Active Scanners</h3>
+          <div id="scanners-list" class="space-y-3">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifications Tab -->
+      <div id="tab-notifications" class="tab-panel hidden space-y-6">
+        <div class="card p-6">
+          <h3 class="section-title mb-4">Notification Settings</h3>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-700">Enable Notifications</p>
+                <p class="text-xs text-gray-500">Show alerts for new findings</p>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="notifications-enabled" class="sr-only peer" checked>
+                <div class="w-11 h-6 bg-gray-200 peer-focus:ring-2 peer-focus:ring-vault-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-vault-600"></div>
+              </label>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Minimum Severity</label>
+              <select id="min-severity" class="select w-full max-w-xs">
+                <option value="critical">Critical only</option>
+                <option value="high" selected>High and above</option>
+                <option value="medium">Medium and above</option>
+                <option value="low">All findings</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Privacy Tab -->
+      <div id="tab-privacy" class="tab-panel hidden space-y-6">
+        <div class="card p-6">
+          <h3 class="section-title mb-4">Privacy Settings</h3>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-700">Local Storage Only</p>
+                <p class="text-xs text-gray-500">All data stays on your device</p>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="local-only" class="sr-only peer" checked disabled>
+                <div class="w-11 h-6 bg-gray-200 peer-focus:ring-2 peer-focus:ring-vault-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-vault-600"></div>
+              </label>
+            </div>
+            <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-green-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+                <div>
+                  <p class="text-sm font-medium text-green-800">Privacy First</p>
+                  <p class="text-xs text-green-700">VaultGuard processes everything locally. No data is ever sent to external servers.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Tab -->
+      <div id="tab-about" class="tab-panel hidden space-y-6">
+        <div class="card p-6">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-16 h-16 bg-vault-600 rounded-2xl flex items-center justify-center">
+              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-gray-900">VaultGuard</h2>
+              <p class="text-sm text-gray-500">Version 1.0.0</p>
+              <p class="text-sm text-vault-600 font-medium">"Protect Your Secrets, Guard Your Vault"</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 mb-4">
+            VaultGuard is a comprehensive browser-based security analysis tool designed to help developers and security teams identify vulnerabilities in web applications.
+          </p>
+          <div class="space-y-2 text-sm">
+            <p><strong>Features:</strong></p>
+            <ul class="list-disc list-inside text-gray-600 space-y-1">
+              <li>API Key & Secrets Detection</li>
+              <li>Security Headers Analysis</li>
+              <li>Cookie Security Checks</li>
+              <li>JWT Token Analysis</li>
+              <li>PII Detection</li>
+              <li>Local Storage Scanning</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

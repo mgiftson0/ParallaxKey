@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>VaultGuard Settings</title><link rel="stylesheet" href="../styles/output.css"></head>
+<body class="bg-gray-100 min-h-screen">
+  <div class="max-w-2xl mx-auto py-8 px-4">
+    <header class="mb-8"><h1 class="text-2xl font-bold text-gray-900">VaultGuard Settings</h1><p class="text-gray-500">Configure your security scanner</p></header>
+    <div class="space-y-6">
+      <section class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+        <div class="px-4 py-3 bg-gray-50 border-b border-gray-200 font-semibold">General</div>
+        <div class="p-4 space-y-4">
+          <label class="flex items-center justify-between"><span>Auto-scan on page load</span><input type="checkbox" id="auto-scan" class="w-5 h-5"></label>
+          <label class="flex items-center justify-between"><span>Show badge on icon</span><input type="checkbox" id="show-badge" class="w-5 h-5" checked></label>
+        </div>
+      </section>
+      <section class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+        <div class="px-4 py-3 bg-gray-50 border-b border-gray-200 font-semibold">Scanning</div>
+        <div class="p-4"><label class="block text-sm font-medium mb-1">Default scan type</label><select id="default-scan-type" class="w-full px-3 py-2 border border-gray-300 rounded-lg"><option value="quick">Quick</option><option value="standard" selected>Standard</option><option value="deep">Deep</option></select></div>
+      </section>
+      <div class="flex justify-end"><button id="btn-save" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium">Save Settings</button></div>
+    </div>
+  </div>
+  <script src="options.js" type="module"></script>
+</body>
+</html>

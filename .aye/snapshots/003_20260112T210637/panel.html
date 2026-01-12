@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VaultGuard DevTools</title>
+  <link rel="stylesheet" href="../styles/output.css">
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+  <div class="flex flex-col h-screen">
+    <header class="bg-gray-800 border-b border-gray-700 px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 bg-vault-600 rounded flex items-center justify-center">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+        </div>
+        <span class="font-semibold">VaultGuard</span>
+      </div>
+      <button id="scan-btn" class="bg-vault-600 hover:bg-vault-700 text-white px-3 py-1.5 rounded text-sm font-medium transition-colors">
+        Scan Page
+      </button>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-4">
+      <div id="findings-container" class="space-y-2">
+        <div class="text-center py-12 text-gray-500">
+          <p>Run a scan to detect security issues</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="panel.js"></script>
+</body>
+</html>

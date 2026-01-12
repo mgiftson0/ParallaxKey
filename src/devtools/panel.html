@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>VaultGuard Panel</title><link rel="stylesheet" href="../styles/output.css"></head>
+<body class="bg-gray-900 text-gray-100 min-h-screen p-4">
+  <div class="flex items-center justify-between mb-4"><h1 class="text-xl font-bold">VaultGuard Panel</h1><button id="btn-scan" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Scan</button></div>
+  <div class="grid grid-cols-5 gap-4 mb-4">
+    <div class="text-center"><p id="stat-critical" class="text-2xl font-bold text-red-500">0</p><p class="text-xs text-gray-400">Critical</p></div>
+    <div class="text-center"><p id="stat-high" class="text-2xl font-bold text-orange-500">0</p><p class="text-xs text-gray-400">High</p></div>
+    <div class="text-center"><p id="stat-medium" class="text-2xl font-bold text-yellow-500">0</p><p class="text-xs text-gray-400">Medium</p></div>
+    <div class="text-center"><p id="stat-low" class="text-2xl font-bold text-blue-500">0</p><p class="text-xs text-gray-400">Low</p></div>
+    <div class="text-center"><p id="stat-info" class="text-2xl font-bold text-gray-400">0</p><p class="text-xs text-gray-400">Info</p></div>
+  </div>
+  <div id="vuln-list" class="space-y-2"><p class="text-gray-500">Click Scan to analyze</p></div>
+  <script src="panel.js" type="module"></script>
+</body>
+</html>

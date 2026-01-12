@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VaultGuard</title>
+  <link rel="stylesheet" href="../styles/output.css">
+</head>
+<body class="w-[360px] min-h-[400px] bg-gray-50">
+  <div class="flex flex-col min-h-[400px]">
+    <!-- Header -->
+    <header class="flex items-center justify-between px-4 py-3 bg-white border-b">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-vault-600 rounded-lg flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-lg font-bold text-gray-900">VaultGuard</h1>
+          <p class="text-xs text-gray-500">Security Scanner</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- URL Bar -->
+    <div class="px-4 py-2 bg-white border-b">
+      <p id="site-url" class="text-sm text-gray-600 truncate">Loading...</p>
+    </div>
+
+    <!-- Scan Button -->
+    <div class="px-4 py-3">
+      <button id="btn-scan" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-vault-600 text-white rounded-lg hover:bg-vault-700 font-medium transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+        <span id="btn-text">Start Scan</span>
+      </button>
+    </div>
+
+    <!-- Results -->
+    <div id="results" class="hidden flex-1 px-4 pb-4">
+      <div class="bg-white rounded-xl border p-4 mb-3">
+        <div class="flex items-center justify-between mb-3">
+          <div>
+            <p class="text-sm text-gray-500">Security Score</p>
+            <p id="vuln-count" class="text-xl font-bold">0 issues</p>
+          </div>
+          <div id="grade" class="w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold bg-green-100 text-green-600">A</div>
+        </div>
+        
+        <!-- Severity Bars -->
+        <div class="space-y-1.5 text-xs">
+          <div class="flex items-center gap-2">
+            <span class="w-14 text-gray-500">Critical</span>
+            <div class="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+              <div id="bar-crit" class="h-full bg-red-600 rounded-full transition-all" style="width: 0%"></div>
+            </div>
+            <span id="cnt-crit" class="w-4 text-right font-medium">0</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-14 text-gray-500">High</span>
+            <div class="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+              <div id="bar-high" class="h-full bg-orange-500 rounded-full transition-all" style="width: 0%"></div>
+            </div>
+            <span id="cnt-high" class="w-4 text-right font-medium">0</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-14 text-gray-500">Medium</span>
+            <div class="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+              <div id="bar-med" class="h-full bg-yellow-500 rounded-full transition-all" style="width: 0%"></div>
+            </div>
+            <span id="cnt-med" class="w-4 text-right font-medium">0</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-14 text-gray-500">Low</span>
+            <div class="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+              <div id="bar-low" class="h-full bg-blue-500 rounded-full transition-all" style="width: 0%"></div>
+            </div>
+            <span id="cnt-low" class="w-4 text-right font-medium">0</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Findings -->
+      <div>
+        <h3 class="text-xs font-medium text-gray-500 uppercase mb-2">Findings</h3>
+        <div id="findings" class="space-y-2 max-h-48 overflow-y-auto"></div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty" class="flex-1 flex flex-col items-center justify-center px-4 py-6">
+      <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-3">
+        <svg class="w-7 h-7 text-vault-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+        </svg>
+      </div>
+      <h3 class="text-base font-medium text-gray-900 mb-1">Ready to Scan</h3>
+      <p class="text-sm text-gray-500 text-center">Click the button above to scan this page for security issues.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-auto px-4 py-2 bg-white border-t text-xs text-gray-400 text-center">
+      VaultGuard v1.0.0
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

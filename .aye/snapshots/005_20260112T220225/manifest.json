@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "VaultGuard Security Scanner",
+  "version": "1.0.0",
+  "description": "Protect Your Secrets, Guard Your Vault - Security scanner for web applications",
+  "icons": { "16": "assets/icons/icon-16.png", "32": "assets/icons/icon-32.png", "48": "assets/icons/icon-48.png", "128": "assets/icons/icon-128.png" },
+  "action": { "default_popup": "popup/popup.html", "default_icon": { "16": "assets/icons/icon-16.png", "32": "assets/icons/icon-32.png" }, "default_title": "VaultGuard" },
+  "background": { "service_worker": "background/service-worker.js", "type": "module" },
+  "content_scripts": [{ "matches": ["http://*/*", "https://*/*"], "js": ["content/content-script.js"], "run_at": "document_idle" }],
+  "devtools_page": "devtools/devtools.html",
+  "options_ui": { "page": "options/options.html", "open_in_tab": true },
+  "permissions": ["activeTab", "storage", "tabs", "webRequest", "scripting"],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "content_security_policy": { "extension_pages": "script-src 'self'; object-src 'self'" }
+}

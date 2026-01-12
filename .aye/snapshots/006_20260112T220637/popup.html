@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VaultGuard</title>
+  <link rel="stylesheet" href="../styles/output.css">
+</head>
+<body class="w-[380px] min-h-[500px] bg-gray-50">
+  <div id="app" class="flex flex-col min-h-[500px]">
+    <header class="flex items-center justify-between px-4 py-3 bg-white border-b border-gray-200">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        </div>
+        <div><h1 class="text-lg font-bold text-gray-900">VaultGuard</h1><p class="text-xs text-gray-500">Security Scanner</p></div>
+      </div>
+      <button id="btn-settings" class="p-2 text-gray-500 hover:bg-gray-100 rounded-lg"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></button>
+    </header>
+    <div class="px-4 py-3 bg-white border-b border-gray-200"><p id="site-url" class="text-sm text-gray-600 truncate">Loading...</p></div>
+    <div class="px-4 py-4"><div class="flex gap-2">
+      <button id="btn-scan" class="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg><span>Start Scan</span></button>
+      <select id="scan-type" class="px-3 py-2 border border-gray-300 rounded-lg bg-white"><option value="quick">Quick</option><option value="standard" selected>Standard</option><option value="deep">Deep</option></select>
+    </div></div>
+    <div id="scanning-status" class="hidden px-4 py-6 text-center"><div class="w-8 h-8 border-2 border-gray-200 border-t-blue-600 rounded-full animate-spin mx-auto mb-3"></div><p class="text-sm text-gray-600">Scanning...</p></div>
+    <div id="results-section" class="hidden flex-1 px-4 pb-4">
+      <div class="bg-white rounded-xl border border-gray-200 p-4 mb-4">
+        <div class="flex items-center justify-between mb-4"><div><p class="text-sm text-gray-500">Security Score</p><p id="vuln-count" class="text-2xl font-bold text-gray-900">0 issues</p></div><div id="grade-badge" class="w-14 h-14 rounded-full flex items-center justify-center text-2xl font-bold bg-green-100 text-green-600">A</div></div>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2"><span class="w-16 text-xs text-gray-500">Critical</span><div class="flex-1 h-2 bg-gray-100 rounded-full"><div id="bar-critical" class="h-full bg-red-600 rounded-full transition-all" style="width:0%"></div></div><span id="count-critical" class="w-6 text-xs font-medium text-right">0</span></div>
+          <div class="flex items-center gap-2"><span class="w-16 text-xs text-gray-500">High</span><div class="flex-1 h-2 bg-gray-100 rounded-full"><div id="bar-high" class="h-full bg-orange-500 rounded-full transition-all" style="width:0%"></div></div><span id="count-high" class="w-6 text-xs font-medium text-right">0</span></div>
+          <div class="flex items-center gap-2"><span class="w-16 text-xs text-gray-500">Medium</span><div class="flex-1 h-2 bg-gray-100 rounded-full"><div id="bar-medium" class="h-full bg-yellow-500 rounded-full transition-all" style="width:0%"></div></div><span id="count-medium" class="w-6 text-xs font-medium text-right">0</span></div>
+          <div class="flex items-center gap-2"><span class="w-16 text-xs text-gray-500">Low</span><div class="flex-1 h-2 bg-gray-100 rounded-full"><div id="bar-low" class="h-full bg-blue-500 rounded-full transition-all" style="width:0%"></div></div><span id="count-low" class="w-6 text-xs font-medium text-right">0</span></div>
+        </div>
+      </div>
+      <div class="flex gap-2 mb-4"><button id="btn-export" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 text-sm font-medium">Export Report</button></div>
+      <div><h3 class="text-xs font-medium text-gray-500 uppercase mb-2">Top Issues</h3><div id="findings-list" class="space-y-2"></div></div>
+    </div>
+    <div id="empty-state" class="flex-1 flex flex-col items-center justify-center px-4 py-8"><div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4"><svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div><h3 class="text-lg font-medium text-gray-900 mb-2">Ready to Scan</h3><p class="text-sm text-gray-500 text-center">Click "Start Scan" to analyze this page.</p></div>
+    <footer class="mt-auto px-4 py-3 bg-white border-t border-gray-200 text-xs text-gray-500 flex justify-between"><span>VaultGuard v1.0.0</span><a href="#" class="text-blue-600 hover:underline">Help</a></footer>
+  </div>
+  <script src="popup.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "vaultguard",
+  "version": "1.0.0",
+  "scripts": {
+    "prebuild": "node scripts/setup.js",
+    "build": "npm run build:css && npm run build:ts && npm run copy",
+    "build:ts": "npx esbuild src/background/service-worker.ts --bundle --outfile=dist/background/service-worker.js --format=iife --target=es2020 && npx esbuild src/content/content-script.ts --bundle --outfile=dist/content/content-script.js --format=iife --target=es2020 && npx esbuild src/popup/popup.ts --bundle --outfile=dist/popup/popup.js --format=iife --target=es2020 && npx esbuild src/options/options.ts --bundle --outfile=dist/options/options.js --format=iife --target=es2020",
+    "build:css": "npx tailwindcss -i ./src/styles/input.css -o ./dist/styles/output.css --minify",
+    "copy": "node scripts/copy-assets.js",
+    "clean": "node scripts/clean.js"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.260",
+    "esbuild": "^0.20.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.3"
+  }
+}

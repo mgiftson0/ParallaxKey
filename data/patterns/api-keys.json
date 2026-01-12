@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0",
+  "patterns": [
+    { "id": "aws-access-key", "name": "AWS Access Key ID", "service": "AWS", "regex": "AKIA[0-9A-Z]{16}", "severity": "critical" },
+    { "id": "github-token", "name": "GitHub Token", "service": "GitHub", "regex": "ghp_[A-Za-z0-9]{36,}", "severity": "critical" },
+    { "id": "stripe-secret", "name": "Stripe Secret Key", "service": "Stripe", "regex": "sk_(test|live)_[0-9a-zA-Z]{24,}", "severity": "critical" },
+    { "id": "openai-key", "name": "OpenAI API Key", "service": "OpenAI", "regex": "sk-[A-Za-z0-9]{48}", "severity": "critical" },
+    { "id": "firebase-key", "name": "Firebase API Key", "service": "Firebase", "regex": "AIza[0-9A-Za-z_-]{35}", "severity": "medium" }
+  ]
+}

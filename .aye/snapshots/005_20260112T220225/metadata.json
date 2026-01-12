@@ -1,0 +1,38 @@
+{
+  "timestamp": "20260112T220225",
+  "files": [
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\background\\service-worker.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\005_20260112T220225\\service-worker.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\content\\content-script.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\005_20260112T220225\\content-script.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\popup\\popup.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\005_20260112T220225\\popup.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\scanners\\scanner-engine.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\005_20260112T220225\\scanner-engine.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\manifest.json",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\005_20260112T220225\\manifest.json"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\types\\index.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\005_20260112T220225\\index.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\storage\\database.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\005_20260112T220225\\database.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\storage\\settings.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\005_20260112T220225\\settings.ts"
+    }
+  ],
+  "prompt": "im trying it but when i click start scan nothing comes its not working "
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VaultGuard</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <img src="../assets/icons/icon-32.png" alt="VaultGuard" width="24" height="24">
+        <span class="logo-text">VaultGuard</span>
+      </div>
+      <button id="settings-btn" class="icon-btn" title="Settings">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Environment Badge -->
+    <div id="environment-badge" class="environment-badge">
+      <span class="env-dot"></span>
+      <span class="env-text">Detecting...</span>
+    </div>
+
+    <!-- Scan Controls -->
+    <div class="scan-controls">
+      <button id="quick-scan-btn" class="btn btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+        </svg>
+        Quick Scan
+      </button>
+      <button id="full-scan-btn" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        Full Scan
+      </button>
+    </div>
+
+    <!-- Scan Progress -->
+    <div id="scan-progress" class="scan-progress hidden">
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+      <span class="progress-text">Scanning...</span>
+    </div>
+
+    <!-- Results Summary -->
+    <div id="results-summary" class="results-summary">
+      <h3>Security Overview</h3>
+      <div class="severity-grid">
+        <div class="severity-item critical">
+          <span class="severity-count" id="critical-count">0</span>
+          <span class="severity-label">Critical</span>
+        </div>
+        <div class="severity-item high">
+          <span class="severity-count" id="high-count">0</span>
+          <span class="severity-label">High</span>
+        </div>
+        <div class="severity-item medium">
+          <span class="severity-count" id="medium-count">0</span>
+          <span class="severity-label">Medium</span>
+        </div>
+        <div class="severity-item low">
+          <span class="severity-count" id="low-count">0</span>
+          <span class="severity-label">Low</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Findings -->
+    <div id="findings-list" class="findings-list">
+      <h3>Recent Findings</h3>
+      <div id="findings-container" class="findings-container">
+        <p class="empty-state">No vulnerabilities found yet. Run a scan to get started.</p>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button id="export-btn" class="btn btn-outline" disabled>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+        </svg>
+        Export
+      </button>
+      <button id="devtools-btn" class="btn btn-outline">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+          <line x1="8" y1="21" x2="16" y2="21"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+        DevTools
+      </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>VaultGuard v1.0.0</span>
+      <a href="#" id="help-link">Help</a>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

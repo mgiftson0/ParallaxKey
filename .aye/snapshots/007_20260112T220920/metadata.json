@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260112T220920",
+  "files": [
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\package.json",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\007_20260112T220920\\package.json"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\build.js",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\007_20260112T220920\\build.js"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\manifest.json",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\007_20260112T220920\\manifest.json"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\background\\service-worker.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\007_20260112T220920\\service-worker.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\content\\content-script.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\007_20260112T220920\\content-script.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\popup\\popup.html",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\007_20260112T220920\\popup.html"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\popup\\popup.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\007_20260112T220920\\popup.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\options\\options.html",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\007_20260112T220920\\options.html"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\options\\options.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\007_20260112T220920\\options.ts"
+    }
+  ],
+  "prompt": "run build there are so manu errors"
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VaultGuard Settings</title>
+  <link rel="stylesheet" href="../styles/output.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <div class="max-w-lg mx-auto py-8 px-4">
+    <h1 class="text-2xl font-bold text-gray-900 mb-6">VaultGuard Settings</h1>
+    
+    <div class="bg-white rounded-xl border p-4 mb-4">
+      <h2 class="font-semibold mb-3">About</h2>
+      <p class="text-sm text-gray-600">VaultGuard Security Scanner v1.0.0</p>
+      <p class="text-sm text-gray-500 mt-2">Scans web pages for exposed secrets, insecure storage, and other security issues.</p>
+    </div>
+    
+    <div class="bg-white rounded-xl border p-4">
+      <h2 class="font-semibold mb-3">Scan History</h2>
+      <div id="history" class="space-y-2 text-sm">
+        <p class="text-gray-500">Loading...</p>
+      </div>
+    </div>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>

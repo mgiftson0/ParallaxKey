@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "rules": [
+    { "id": "no-inline-secrets", "name": "No Inline Secrets", "severity": "critical", "enabled": true },
+    { "id": "secure-cookies", "name": "Secure Cookies", "severity": "high", "enabled": true },
+    { "id": "security-headers", "name": "Security Headers", "severity": "high", "enabled": true },
+    { "id": "no-pii-exposure", "name": "No PII Exposure", "severity": "high", "enabled": true }
+  ]
+}

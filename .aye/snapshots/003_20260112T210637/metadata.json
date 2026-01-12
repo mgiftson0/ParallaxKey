@@ -1,0 +1,166 @@
+{
+  "timestamp": "20260112T210637",
+  "files": [
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\package.json",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\package.json"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\tsconfig.json",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\tsconfig.json"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\webpack.config.js",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\webpack.config.js"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\tailwind.config.js",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\tailwind.config.js"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\scripts\\setup.js",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\setup.js"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\scripts\\build-css.js",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\build-css.js"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\scripts\\create-icons.js",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\create-icons.js"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\scripts\\package.js",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\package.js"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\manifest.json",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\manifest.json"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\styles\\tailwind.css",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\tailwind.css"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\styles\\output.css",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\output.css"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\types\\index.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\index.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\utils\\logger.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\logger.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\utils\\helpers.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\helpers.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\storage\\database.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\database.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\scanners\\base-scanner.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\base-scanner.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\scanners\\api-key-scanner.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\api-key-scanner.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\scanners\\header-scanner.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\header-scanner.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\scanners\\storage-scanner.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\storage-scanner.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\scanners\\cookie-scanner.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\cookie-scanner.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\scanners\\pii-scanner.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\pii-scanner.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\scanners\\scanner-engine.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\scanner-engine.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\background\\service-worker.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\service-worker.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\content\\content-script.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\content-script.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\popup\\popup.html",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\popup.html"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\popup\\popup.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\popup.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\options\\options.html",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\options.html"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\options\\options.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\options.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\devtools\\devtools.html",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\devtools.html"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\devtools\\devtools.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\devtools.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\devtools\\panel.html",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\panel.html"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\devtools\\panel.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\panel.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\assets\\icons\\icon-16.png",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\icon-16.png"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\assets\\icons\\icon-32.png",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\icon-32.png"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\assets\\icons\\icon-48.png",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\icon-48.png"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\assets\\icons\\icon-128.png",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\icon-128.png"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\data\\patterns\\api-keys.json",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\api-keys.json"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\data\\rules\\default-rules.json",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\default-rules.json"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\README.md",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\README.md"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.gitignore",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\003_20260112T210637\\.gitignore"
+    }
+  ],
+  "prompt": "there are some errors run build "
+}

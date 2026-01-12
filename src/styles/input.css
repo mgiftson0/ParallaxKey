@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+
+    :root {
+        --background: theme('colors.background.light');
+        --foreground: theme('colors.secondary.dark');
+        --card: theme('colors.surface.light');
+        --primary: theme('colors.primary.DEFAULT');
+        --primary-foreground: theme('colors.surface.light');
+        --secondary: theme('colors.secondary.light');
+        --muted: theme('colors.background.light');
+        --border: #E2E8F0;
+        --radius: 0.75rem;
+    }
+
+    .dark {
+        --background: theme('colors.background.dark');
+        --foreground: #F8FAFC;
+        --card: theme('colors.surface.dark');
+        --primary: theme('colors.primary.dark');
+        --primary-foreground: theme('colors.background.dark');
+        --secondary: theme('colors.secondary.dark');
+        --muted: theme('colors.accent.charcoal');
+        --border: #2D2D2D;
+    }
+
+    body {
+        @apply bg-background-light text-secondary-dark font-sans transition-colors duration-300;
+    }
+
+    .dark body {
+        @apply bg-background-dark text-slate-100;
+    }
+}
+
+@layer components {
+    .premium-card {
+        @apply bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-[#2D2D2D] rounded-xl p-4 shadow-sm backdrop-blur-xs;
+    }
+
+    .glass-card {
+        @apply bg-white/70 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-xl p-4;
+    }
+
+    .btn-premium {
+        @apply bg-primary hover:bg-primary-hover text-white px-4 py-2.5 rounded-lg font-semibold transition-all duration-300 active:scale-95 shadow-lg shadow-blue-500/20 disabled:opacity-50 disabled:grayscale;
+    }
+
+    .status-badge {
+        @apply px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider;
+    }
+}

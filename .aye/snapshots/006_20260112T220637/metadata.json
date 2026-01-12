@@ -1,0 +1,62 @@
+{
+  "timestamp": "20260112T220637",
+  "files": [
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\manifest.json",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\006_20260112T220637\\manifest.json"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\tsconfig.json",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\006_20260112T220637\\tsconfig.json"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\package.json",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\006_20260112T220637\\package.json"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\scripts\\setup.js",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\006_20260112T220637\\setup.js"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\scripts\\copy-assets.js",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\006_20260112T220637\\copy-assets.js"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\scripts\\clean.js",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\006_20260112T220637\\clean.js"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\tailwind.config.js",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\006_20260112T220637\\tailwind.config.js"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\types\\index.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\006_20260112T220637\\index.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\background\\service-worker.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\006_20260112T220637\\service-worker.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\content\\content-script.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\006_20260112T220637\\content-script.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\popup\\popup.html",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\006_20260112T220637\\popup.html"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\popup\\popup.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\006_20260112T220637\\popup.ts"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\options\\options.html",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\006_20260112T220637\\options.html"
+    },
+    {
+      "original": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\src\\options\\options.ts",
+      "snapshot": "C:\\Users\\mgift\\OneDrive\\Desktop\\vault\\.aye\\snapshots\\006_20260112T220637\\options.ts"
+    }
+  ],
+  "prompt": "the service worker is inactive"
+}

@@ -1,0 +1,77 @@
+{
+  "version": "1.0.0",
+  "patterns": [
+    {
+      "id": "aws-access-key",
+      "name": "AWS Access Key ID",
+      "service": "AWS",
+      "regex": "AKIA[0-9A-Z]{16}",
+      "severity": "critical",
+      "confidence": "high",
+      "description": "AWS Access Key ID for programmatic access to AWS services"
+    },
+    {
+      "id": "github-token",
+      "name": "GitHub Personal Access Token",
+      "service": "GitHub",
+      "regex": "ghp_[A-Za-z0-9]{36,}",
+      "severity": "critical",
+      "confidence": "high",
+      "description": "GitHub PAT for repository and API access"
+    },
+    {
+      "id": "stripe-secret",
+      "name": "Stripe Secret Key",
+      "service": "Stripe",
+      "regex": "sk_(test|live)_[0-9a-zA-Z]{24,}",
+      "severity": "critical",
+      "confidence": "high",
+      "description": "Stripe secret key for payment processing"
+    },
+    {
+      "id": "openai-key",
+      "name": "OpenAI API Key",
+      "service": "OpenAI",
+      "regex": "sk-[A-Za-z0-9]{48}",
+      "severity": "critical",
+      "confidence": "high",
+      "description": "OpenAI API key for AI services"
+    },
+    {
+      "id": "firebase-key",
+      "name": "Firebase API Key",
+      "service": "Firebase",
+      "regex": "AIza[0-9A-Za-z_-]{35}",
+      "severity": "medium",
+      "confidence": "high",
+      "description": "Firebase/Google API key"
+    },
+    {
+      "id": "slack-token",
+      "name": "Slack Bot Token",
+      "service": "Slack",
+      "regex": "xoxb-[0-9]{10,13}-[0-9]{10,13}-[a-zA-Z0-9]{24}",
+      "severity": "high",
+      "confidence": "high",
+      "description": "Slack bot token for workspace access"
+    },
+    {
+      "id": "sendgrid-key",
+      "name": "SendGrid API Key",
+      "service": "SendGrid",
+      "regex": "SG\\.[A-Za-z0-9_-]{22}\\.[A-Za-z0-9_-]{43}",
+      "severity": "high",
+      "confidence": "high",
+      "description": "SendGrid API key for email services"
+    },
+    {
+      "id": "private-key",
+      "name": "Private Key",
+      "service": "Generic",
+      "regex": "-----BEGIN (?:RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----",
+      "severity": "critical",
+      "confidence": "high",
+      "description": "Cryptographic private key"
+    }
+  ]
+}
