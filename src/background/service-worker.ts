@@ -209,7 +209,8 @@ async function runScan(tabId: number, url: string): Promise<ScanResult> {
 
 // Message handler
 chrome.runtime.onMessage.addListener((msg, sender, respond) => {
-  console.log('[VaultGuard] Message:', msg.type);
+  console.log('[VaultGuard] Message received:', msg);
+  console.log('[VaultGuard] Message type:', msg.type);
 
   (async () => {
     try {

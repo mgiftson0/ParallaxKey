@@ -49,6 +49,7 @@ async function init() {
 }
 
 async function scan() {
+  console.log('[VaultGuard] Scan button clicked');
   const btn = $('scan-btn') as HTMLButtonElement;
   btn.disabled = true;
   $('btn-text').textContent = 'Analyzing Site...';
@@ -56,7 +57,9 @@ async function scan() {
   $('results').classList.add('hidden');
 
   try {
+    console.log('[VaultGuard] Sending START_SCAN message');
     const response = await sendMsg({ type: 'START_SCAN' });
+    console.log('[VaultGuard] Got response:', response);
 
     if (response?.error) {
       console.error('[VaultGuard] Scan error:', response.error);
@@ -89,11 +92,11 @@ function showResults(result: ScanResult) {
   gradeEl.textContent = summary.grade;
 
   const gradeClasses: Record<string, string> = {
-    A: 'bg-green-100 text-green-600 dark:bg-green-500/20 dark:text-green-400',
-    B: 'bg-lime-100 text-lime-600 dark:bg-lime-500/20 dark:text-lime-400',
-    C: 'bg-yellow-100 text-yellow-600 dark:bg-yellow-500/20 dark:text-yellow-400',
-    D: 'bg-orange-100 text-orange-600 dark:bg-orange-500/20 dark:text-orange-400',
-    F: 'bg-red-100 text-red-600 dark:bg-red-500/20 dark:text-red-400'
+    A: 'bg-gradient-to-br from-green-500/20 to-emerald-600/20 border-2 border-green-500/50 text-green-400 shadow-glow',
+    B: 'bg-gradient-to-br from-lime-500/20 to-green-600/20 border-2 border-lime-500/50 text-lime-400',
+    C: 'bg-gradient-to-br from-amber-500/20 to-yellow-600/20 border-2 border-amber-500/50 text-amber-400',
+    D: 'bg-gradient-to-br from-orange-500/20 to-red-600/20 border-2 border-orange-500/50 text-orange-400',
+    F: 'bg-gradient-to-br from-red-500/20 to-red-700/20 border-2 border-red-500/50 text-red-400 threat-level-critical'
   };
   gradeEl.className = `w-14 h-14 rounded-2xl flex items-center justify-center text-2xl font-black shadow-inner transition-colors duration-500 ${gradeClasses[summary.grade] || ''}`;
 
@@ -112,18 +115,47 @@ function showResults(result: ScanResult) {
   // Finding cards
   const list = $('findings-list');
   if (vulnerabilities.length === 0) {
-    list.innerHTML = '<div class="py-8 text-center space-y-2"><div class="text-green-500 font-bold">✓ Shield Active</div><div class="text-[10px] opacity-50 uppercase tracking-tighter">No threats detected in this sector</div></div>';
+    list.innerHTML = `
+      <div class="text-center py-6 space-y-3">
+        <div class="flex items-center justify-center gap-2 text-green-400 font-mono text-sm">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+          <span>SECURITY PROTOCOL ACTIVE</span>
+        </div>
+        <div class="text-xs text-cyan-400/60 font-mono uppercase tracking-wider">No threats detected in current sector</div>
+      </div>
+    `;
   } else {
     list.innerHTML = vulnerabilities.map((v, i) => `
-      <div class="group p-3 bg-gray-50 dark:bg-white/5 rounded-xl border border-gray-100 dark:border-white/5 hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 animate-slide-up" style="animation-delay: ${i * 50}ms">
-        <div class="flex items-center justify-between mb-1.5">
-          <div class="flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full ${getSevDot(v.severity)} shadow-sm"></span>
-            <span class="text-xs font-bold truncate max-w-[180px] dark:text-white">${esc(v.title)}</span>
+      <div class="group relative bg-slate-900/50 border border-cyan-500/20 rounded-xl p-4 hover:border-cyan-500/40 transition-all duration-300 animate-slide-up backdrop-blur-sm" style="animation-delay: ${i * 100}ms">
+        <div class="absolute top-0 left-0 w-1 h-full ${getSeverityBorder(v.severity)} rounded-l-xl"></div>
+        
+        <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center gap-3">
+            <div class="w-2 h-2 rounded-full ${getSevDot(v.severity)}"></div>
+            <div>
+              <h4 class="text-sm font-bold text-white font-mono truncate max-w-[200px]">${esc(v.title)}</h4>
+              <p class="text-xs text-cyan-400/60 font-mono mt-1">${esc(v.description || 'Threat detected')}</p>
+            </div>
           </div>
-          <span class="text-[9px] font-black uppercase tracking-tighter opacity-40">${v.severity}</span>
+          <span class="security-badge ${getSeverityBadge(v.severity)}">${v.severity}</span>
         </div>
-        <div class="text-[10px] text-secondary-light truncate opacity-80">${esc(formatLocation(v.location as VaultLocation))}</div>
+        
+        <div class="flex items-center gap-2 text-xs text-cyan-400/80 font-mono">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          <span>${esc(formatLocation(v.location as VaultLocation))}</span>
+        </div>
+        
+        ${v.evidence ? `
+          <div class="mt-3 pt-3 border-t border-cyan-500/20">
+            <div class="text-xs text-cyan-400/60 font-mono">EVIDENCE:</div>
+            <div class="text-xs text-cyan-300 font-mono bg-black/30 px-2 py-1 rounded mt-1">${esc(v.evidence)}</div>
+          </div>
+        ` : ''}
       </div>
     `).join('');
   }
@@ -138,12 +170,32 @@ function formatLocation(loc: VaultLocation): string {
 
 function getSevDot(s: string): string {
   const dots: Record<string, string> = {
-    critical: 'bg-red-500 shadow-red-500/50',
+    critical: 'bg-red-500 shadow-red-500/50 threat-level-critical',
     high: 'bg-orange-500 shadow-orange-500/50',
     medium: 'bg-amber-500 shadow-amber-500/50',
-    low: 'bg-blue-400 shadow-blue-400/50'
+    low: 'bg-cyan-500 shadow-cyan-500/50'
   };
   return dots[s] || 'bg-gray-400';
+}
+
+function getSeverityBorder(s: string): string {
+  const borders: Record<string, string> = {
+    critical: 'bg-red-500',
+    high: 'bg-orange-500',
+    medium: 'bg-amber-500',
+    low: 'bg-cyan-500'
+  };
+  return borders[s] || 'bg-gray-400';
+}
+
+function getSeverityBadge(s: string): string {
+  const badges: Record<string, string> = {
+    critical: 'bg-red-500/20 text-red-400 border border-red-500/30',
+    high: 'bg-orange-500/20 text-orange-400 border border-orange-500/30',
+    medium: 'bg-amber-500/20 text-amber-400 border border-amber-500/30',
+    low: 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30'
+  };
+  return badges[s] || 'bg-gray-500/20 text-gray-400 border border-gray-500/30';
 }
 
 function showEmpty() {
@@ -158,10 +210,16 @@ function esc(s: string): string {
 }
 
 function sendMsg(msg: any): Promise<any> {
+  console.log('[VaultGuard] Sending message:', msg);
   return new Promise((resolve) => {
     chrome.runtime.sendMessage(msg, r => {
-      if (chrome.runtime.lastError) resolve({ error: chrome.runtime.lastError.message });
-      else resolve(r);
+      if (chrome.runtime.lastError) {
+        console.error('[VaultGuard] Runtime error:', chrome.runtime.lastError.message);
+        resolve({ error: chrome.runtime.lastError.message });
+      } else {
+        console.log('[VaultGuard] Message response:', r);
+        resolve(r);
+      }
     });
   });
 }
