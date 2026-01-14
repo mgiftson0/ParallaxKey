@@ -1,4 +1,4 @@
-# VaultGuard Complete User Guide
+# ParallaxKey Complete User Guide
 
 ## Table of Contents
 
@@ -29,13 +29,13 @@
    - Select the `dist` folder
 
 3. **Verify installation:**
-   - Look for the VaultGuard shield icon in your toolbar
+   - Look for the ParallaxKey shield icon in your toolbar
    - Click it to open the popup
 
 ### First Scan
 
 1. Navigate to any website
-2. Click the VaultGuard icon
+2. Click the ParallaxKey icon
 3. Click "Scan Page"
 4. Wait for scan completion (usually 5-30 seconds)
 5. Review the findings
@@ -48,7 +48,7 @@
 
 ```
 ┌─────────────────────────────────────┐
-│  🔒 VaultGuard        ⚙️           │
+│  🔒 ParallaxKey        ⚙️           │
 ├─────────────────────────────────────┤
 │  Current Page                       │
 │  example.com/app                    │
@@ -231,7 +231,7 @@ res.cookie('session', token, {
 ### DevTools Panel
 
 1. Open DevTools (F12)
-2. Find "VaultGuard" tab
+2. Find "ParallaxKey" tab
 3. Use for detailed analysis during development
 
 ### Exporting Reports
@@ -273,7 +273,7 @@ res.cookie('session', token, {
 ### Extension Not Loading
 
 1. Go to `chrome://extensions`
-2. Click "Reload" on VaultGuard
+2. Click "Reload" on ParallaxKey
 3. Check for errors in extension console
 
 ### High CPU/Memory Usage
@@ -286,7 +286,7 @@ res.cookie('session', token, {
 
 ## Best Practices
 
-1. **Scan before deployment** - Run VaultGuard on staging
+1. **Scan before deployment** - Run ParallaxKey on staging
 2. **Regular scans** - Check periodically for new issues
 3. **Fix critical first** - Prioritize by severity
 4. **Educate team** - Share findings and remediation steps
@@ -302,4 +302,4 @@ res.cookie('session', token, {
 
 ---
 
-*VaultGuard - Protect Your Secrets, Guard Your Vault* 🔒
+*ParallaxKey - Protect Your Secrets, Guard Your Vault* 🔒
