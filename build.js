@@ -22,9 +22,22 @@ async function run() {
       fs.copyFileSync('manifest.json', 'dist/manifest.json');
       fs.copyFileSync('src/popup/popup.html', 'dist/popup/popup.html');
       fs.copyFileSync('src/options/options.html', 'dist/options/options.html');
-      console.log('[Build] Statics copied');
+
+      // Copy icons recursively
+      const copyDir = (src, dest) => {
+        if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true });
+        fs.readdirSync(src).forEach(file => {
+          const s = path.join(src, file);
+          const d = path.join(dest, file);
+          if (fs.lstatSync(s).isDirectory()) copyDir(s, d);
+          else fs.copyFileSync(s, d);
+        });
+      };
+      copyDir('src/assets', 'dist/assets');
+
+      console.log('[Build] Statics and assets copied');
     } catch (err) {
-      console.warn('[Build] Statics copy failed:', err.message);
+      console.warn('[Build] Statics/assets copy failed:', err.message);
     }
   };
   copyStatics();

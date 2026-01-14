@@ -79,6 +79,14 @@ export const SECRET_PATTERNS: SecretPattern[] = [
     description: 'Supabase Anonymous Key for client-side access with RLS.',
   },
   {
+    name: 'Supabase Project URL',
+    service: 'Supabase',
+    pattern: /https:\/\/[a-z0-9-]+\.supabase\.co/gi,
+    severity: 'info',
+    context: {},
+    description: 'Supabase project URL - verify RLS is enabled on all tables.',
+  },
+  {
     name: 'Firebase Database URL',
     service: 'Firebase',
     pattern: /https:\/\/[a-z0-9-]+\.firebaseio\.com/g,

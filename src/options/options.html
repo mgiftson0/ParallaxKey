@@ -1,32 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html class="dark">
+
 <head>
   <meta charset="UTF-8">
-  <title>ParallaxKey Settings</title>
+  <title>ParallaxKey | Settings</title>
+  <link rel="stylesheet" href="../styles/output.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f3f4f6; min-height: 100vh; padding: 40px 20px; }
-    .container { max-width: 500px; margin: 0 auto; }
-    h1 { font-size: 24px; color: #111827; margin-bottom: 24px; }
-    .card { background: white; border-radius: 12px; border: 1px solid #e5e7eb; padding: 20px; margin-bottom: 16px; }
-    .card h2 { font-size: 16px; font-weight: 600; color: #111827; margin-bottom: 8px; }
-    .card p { font-size: 14px; color: #6b7280; }
+    .solar-sphere {
+      filter: blur(80px);
+      opacity: 0.1;
+    }
   </style>
 </head>
-<body>
-  <div class="container">
-    <h1>ParallaxKey Settings</h1>
-    <div class="card">
-      <h2>About</h2>
-      <p>ParallaxKey Security Scanner v1.0.0</p>
-      <p style="margin-top: 8px;">Scans web pages for exposed secrets, insecure storage, and security issues.</p>
-    </div>
-    <div class="card">
-      <h2>How to Use</h2>
-      <p>1. Navigate to any website</p>
-      <p style="margin-top: 4px;">2. Click the ParallaxKey icon</p>
-      <p style="margin-top: 4px;">3. Click "Start Scan" to analyze the page</p>
+
+<body
+  class="bg-background text-foreground font-sans min-h-screen selection:bg-white selection:text-black antialiased overflow-hidden">
+  <!-- Solar Background -->
+  <div class="solar-background">
+    <div class="solar-sphere solar-sphere-1"></div>
+    <div class="solar-sphere solar-sphere-2"></div>
+  </div>
+
+  <div class="relative z-10 max-w-2xl mx-auto px-6 py-12 space-y-12">
+    <header class="space-y-2">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-2xl">
+          <svg class="w-7 h-7 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+        </div>
+        <h1 class="text-3xl font-bold tracking-tight">ParallaxKey Settings</h1>
+      </div>
+      <p class="text-muted-foreground text-lg">Manage your security preferences and suite configuration.</p>
+    </header>
+
+    <div class="grid gap-6">
+      <section class="card p-6 space-y-4">
+        <div>
+          <h2 class="text-lg font-semibold">About ParallaxKey</h2>
+          <p class="text-sm text-muted-foreground">Version 2.0.0 Premium Edition</p>
+        </div>
+        <p class="text-sm leading-relaxed text-muted-foreground/80">
+          ParallaxKey is an advanced cyber security suite designed for real-time threat detection, secret exposure
+          analysis,
+          and proactive defense monitoring across your browsing sessions.
+        </p>
+      </section>
+
+      <section class="card p-6 space-y-4">
+        <h2 class="text-lg font-semibold">Security Operations</h2>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 mt-0.5 rounded-full bg-white/10 flex items-center justify-center text-[10px] font-bold">
+              1</div>
+            <div>
+              <p class="text-sm font-medium">Domain Scanning</p>
+              <p class="text-xs text-muted-foreground">Automatically analyzes active domains for security
+                vulnerabilities.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 mt-0.5 rounded-full bg-white/10 flex items-center justify-center text-[10px] font-bold">
+              2</div>
+            <div>
+              <p class="text-sm font-medium">Secret Detection</p>
+              <p class="text-xs text-muted-foreground">Identifies exposed API keys, tokens, and credentials in network
+                requests and storage.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 mt-0.5 rounded-full bg-white/10 flex items-center justify-center text-[10px] font-bold">
+              3</div>
+            <div>
+              <p class="text-sm font-medium">Interactive Reporting</p>
+              <p class="text-xs text-muted-foreground">Detailed findings with severity-based categorization and evidence
+                collection.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="flex items-center justify-between pt-6 border-t border-white/5">
+        <p class="text-[10px] text-muted-foreground font-mono uppercase tracking-widest text-center w-full">Enhanced
+          Security Protocol Active</p>
+      </div>
     </div>
   </div>
 </body>
+
 </html>

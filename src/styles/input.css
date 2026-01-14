@@ -3,241 +3,118 @@
 @tailwind utilities;
 
 @layer base {
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
-    :root {
-      --background: 222.2 84% 4.9%;
-      --foreground: 210 40% 98%;
-      --card: 222.2 84% 4.9%;
-      --card-foreground: 210 40% 98%;
-      --popover: 222.2 84% 4.9%;
-      --popover-foreground: 210 40% 98%;
-      --primary: 217 91% 60%;
-      --primary-foreground: 222.2 84% 4.9%;
-      --secondary: 217.2 32.6% 17.5%;
-      --secondary-foreground: 210 40% 98%;
-      --muted: 217.2 32.6% 17.5%;
-      --muted-foreground: 215 20.2% 65.1%;
-      --accent: 217.2 32.6% 17.5%;
-      --accent-foreground: 210 40% 98%;
-      --destructive: 0 62.8% 30.6%;
-      --destructive-foreground: 210 40% 98%;
-      --border: 217.2 32.6% 17.5%;
-      --input: 217.2 32.6% 17.5%;
-      --ring: 224.3 76.3% 94.1%;
-      --radius: 0.75rem;
-    }
+  :root {
+    --background: 0 0% 7%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
 
-    .dark {
-      --background: 210 40% 98%;
-      --foreground: 222.2 84% 4.9%;
-      --card: 210 40% 98%;
-      --card-foreground: 222.2 84% 4.9%;
-      --popover: 210 40% 98%;
-      --popover-foreground: 222.2 84% 4.9%;
-      --primary: 217 91% 60%;
-      --primary-foreground: 210 40% 98%;
-      --secondary: 220 14.3% 95.9%;
-      --secondary-foreground: 220.9 39.3% 11%;
-      --muted: 220 14.3% 95.9%;
-      --muted-foreground: 220 8.9% 46.1%;
-      --accent: 220 14.3% 95.9%;
-      --accent-foreground: 220.9 39.3% 11%;
-      --destructive: 0 84.2% 60.2%;
-      --destructive-foreground: 210 40% 98%;
-      --border: 220 13% 91%;
-      --input: 220 13% 91%;
-      --ring: 224.3 76.3% 94.1%;
-    }
+    /* Semantic Colors */
+    --security-safe: 142.1 70.6% 45.3%;
+    --security-warning: 37.9 90.2% 51.2%;
+    --security-danger: 0 84.2% 60.2%;
+  }
 
-    * {
-      @apply border-border;
-    }
+  * {
+    @apply border-border;
+  }
 
-    body {
-      @apply bg-background text-foreground font-sans;
-      font-feature-settings: "rlig" 1, "calt" 1;
-    }
+  body {
+    @apply bg-background text-foreground font-sans antialiased selection:bg-white selection:text-black;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  body::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @layer components {
-    /* shadcn/ui components */
-    .btn {
-      @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50;
-    }
+  .solar-background {
+    @apply fixed inset-0 -z-10 overflow-hidden bg-background;
+  }
 
-    .btn-primary {
-      @apply bg-primary text-primary-foreground shadow hover:bg-primary/90;
-    }
+  .solar-sphere {
+    @apply absolute rounded-full blur-[80px] opacity-20 mix-blend-screen animate-solar-pulse;
+  }
 
-    .btn-secondary {
-      @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
-    }
+  .solar-sphere-1 {
+    @apply w-[400px] h-[400px] -top-20 -left-20 bg-white/10;
+  }
 
-    .btn-ghost {
-      @apply hover:bg-accent hover:text-accent-foreground;
-    }
+  .solar-sphere-2 {
+    @apply w-[300px] h-[300px] bottom-10 right-10 bg-silver-dark/20;
+  }
 
-    .btn-outline {
-      @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
-    }
+  /* Shadcn-like components */
+  .btn {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 active:scale-95;
+  }
 
-    .card {
-      @apply rounded-xl border bg-card text-card-foreground shadow-sm;
-    }
+  .btn-primary {
+    @apply bg-primary text-primary-foreground shadow hover:bg-primary/90;
+  }
 
-    .input {
-      @apply flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50;
-    }
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
 
-    /* Custom ParallaxKey components */
-    .cyber-button {
-      @apply relative overflow-hidden bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95;
-      box-shadow: 0 4px 20px rgba(0, 217, 255, 0.3);
-    }
+  .btn-ghost {
+    @apply hover:bg-accent hover:text-accent-foreground;
+  }
 
-    .cyber-button:hover {
-      box-shadow: 0 8px 30px rgba(0, 217, 255, 0.5);
-    }
+  .btn-outline {
+    @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
+  }
 
-    .cyber-button::before {
-      content: '';
-      @apply absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20 -translate-x-full;
-      animation: shimmer 2s infinite;
-    }
+  .card {
+    @apply rounded-lg border bg-card text-card-foreground shadow-sm backdrop-blur-md border-white/5;
+  }
 
-    .cyber-button:hover::before {
-      animation: shimmer 1s infinite;
-    }
+  .input {
+    @apply flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50;
+  }
 
-    .holographic-card {
-      @apply relative rounded-xl border border-cyan-500/30 bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-xl p-6 shadow-2xl;
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 50%, rgba(15, 23, 42, 0.9) 100%);
-    }
+  .glass {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/10;
+  }
 
-    .holographic-card::before {
-      content: '';
-      @apply absolute inset-0 rounded-xl opacity-50;
-      background: linear-gradient(45deg, transparent 30%, rgba(0, 217, 255, 0.1) 50%, transparent 70%);
-      animation: holographic-shift 3s ease-in-out infinite;
-    }
+  .glass-banner {
+    @apply relative overflow-hidden bg-white/[0.03] border border-white/10 rounded-xl p-4 transition-all duration-300 hover:bg-white/[0.05];
+  }
 
-    .threat-indicator {
-      @apply relative flex items-center gap-2 px-3 py-2 rounded-lg border border-red-500/30 bg-red-500/10 text-red-400 font-mono text-sm;
-      animation: pulse-glow 2s infinite;
-    }
-
-    .security-badge {
-      @apply inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider;
-    }
-
-    .radar-pulse {
-      @apply relative w-3 h-3 rounded-full;
-      animation: radar 1.5s ease-out infinite;
-    }
-
-    .radar-pulse::before {
-      content: '';
-      @apply absolute inset-0 rounded-full;
-      animation: radar-expand 1.5s ease-out infinite;
-    }
-
-    .cyber-grid {
-      background-image: 
-        linear-gradient(rgba(0, 217, 255, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 217, 255, 0.1) 1px, transparent 1px);
-      background-size: 20px 20px;
-    }
-
-    .glitch-text {
-      @apply relative;
-      text-shadow: 
-        0.05em 0 0 rgba(255, 0, 110, 0.75),
-        -0.025em -0.05em 0 rgba(0, 255, 65, 0.75),
-        0.025em 0.05em 0 rgba(0, 217, 255, 0.75);
-      animation: glitch 2s infinite;
-    }
-
-    .neon-border {
-      @apply border-2 rounded-xl;
-      border-color: #00D9FF;
-      box-shadow: 
-        0 0 10px rgba(0, 217, 255, 0.5),
-        inset 0 0 10px rgba(0, 217, 255, 0.1);
-    }
-
-    .data-stream {
-      @apply font-mono text-xs text-green-400;
-      text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
-      animation: data-flow 3s linear infinite;
-    }
+  .glass-banner::after {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent;
+  }
 }
 
 @layer utilities {
-    .text-balance {
-      text-wrap: balance;
-    }
-
-    .animate-shimmer {
-      animation: shimmer 2s infinite;
-    }
-
-    .animate-holographic {
-      animation: holographic 3s ease-in-out infinite;
-    }
-
-    .animate-radar {
-      animation: radar 1.5s ease-out infinite;
-    }
-
-    .animate-glitch {
-      animation: glitch 2s infinite;
-    }
-
-    .animate-data-flow {
-      animation: data-flow 3s linear infinite;
-    }
-}
-
-/* Additional animations */
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-@keyframes holographic-shift {
-  0%, 100% { opacity: 0.3; transform: translateX(-10px); }
-  50% { opacity: 0.7; transform: translateX(10px); }
-}
-
-@keyframes radar {
-  0% { background-color: rgba(0, 217, 255, 0.8); }
-  100% { background-color: rgba(0, 255, 65, 0.3); }
-}
-
-@keyframes radar-expand {
-  0% { 
-    transform: scale(1);
-    opacity: 1;
-    box-shadow: 0 0 0 0 rgba(0, 217, 255, 0.8);
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
-  100% { 
-    transform: scale(3);
-    opacity: 0;
-    box-shadow: 0 0 20px 20px rgba(0, 217, 255, 0);
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
-
-@keyframes glitch {
-  0%, 100% { transform: translate(0); }
-  20% { transform: translate(-1px, 1px); }
-  40% { transform: translate(-1px, -1px); }
-  60% { transform: translate(1px, 1px); }
-  80% { transform: translate(1px, -1px); }
-}
-
-@keyframes data-flow {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-20px); opacity: 0; }
-}
-

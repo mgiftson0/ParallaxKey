@@ -1,25 +1,21 @@
-import { ScanResult, ScanOptions, ScanContext, Vulnerability, DOMAnalysisResult, NetworkRequest, NetworkResponse, ScanSummary } from '../types';
-import { generateId, extractDomain, detectEnvironment, calculateRiskScore, getGrade } from '../utils/helpers';
+import { ScanResult, ScanOptions, ScanContext, Vulnerability, ScanSummary, DOMData } from '../types';
+import { generateId, getDomain, detectEnvironment, severityToScore } from '../utils/helpers';
 import { BaseScanner } from './base-scanner';
-import { APIKeyScanner } from './api-key-scanner';
-import { HeaderScanner } from './header-scanner';
-import { CORSScanner } from './cors-scanner';
-import { StorageScanner } from './storage-scanner';
-import { CookieScanner } from './cookie-scanner';
-import { JWTScanner } from './jwt-scanner';
-import { RequestScanner } from './request-scanner';
-import { FormScanner } from './form-scanner';
+import { APIKeyScanner } from './secrets/api-key-scanner';
+import { CORSScanner } from './headers/cors-scanner';
+import { LocalStorageScanner } from './storage/localstorage-scanner';
+import { CookieScanner } from './storage/cookie-scanner';
+import { FormSecurityScanner } from './dom/form-scanner';
+import { SupabaseRLSScanner } from './database/supabase-rls-scanner';
 
 export class ScannerEngine {
   private scanners: BaseScanner[] = [
     new APIKeyScanner(),
-    new HeaderScanner(),
     new CORSScanner(),
-    new StorageScanner(),
+    new LocalStorageScanner(),
     new CookieScanner(),
-    new JWTScanner(),
-    new RequestScanner(),
-    new FormScanner(),
+    new FormSecurityScanner(),
+    new SupabaseRLSScanner(),
   ];
 
   private status: 'idle' | 'scanning' = 'idle';
@@ -27,37 +23,37 @@ export class ScannerEngine {
 
   getStatus() { return this.status; }
   getCurrentScan() { return this.currentScan; }
-  
-  stop() { 
-    this.status = 'idle'; 
-    console.log('[VaultGuard] Scanner stopped');
+
+  stop() {
+    this.status = 'idle';
+    console.log('[ParallaxKey] Scanner stopped');
   }
 
   async scan(
     url: string,
     tabId: number,
     options: ScanOptions,
-    domAnalysis?: DOMAnalysisResult,
-    networkRequests?: NetworkRequest[],
-    networkResponses?: NetworkResponse[]
+    domAnalysis?: DOMData,
+    networkRequests?: any[],
+    networkResponses?: any[]
   ): Promise<ScanResult> {
-    console.log('[VaultGuard] ScannerEngine.scan() called');
-    console.log('[VaultGuard] URL:', url);
-    console.log('[VaultGuard] DOM Analysis:', domAnalysis ? 'provided' : 'not provided');
-    console.log('[VaultGuard] Network Requests:', networkRequests?.length || 0);
-    console.log('[VaultGuard] Network Responses:', networkResponses?.length || 0);
-    
+    console.log('[ParallaxKey] ScannerEngine.scan() called');
+    console.log('[ParallaxKey] URL:', url);
+    console.log('[ParallaxKey] DOM Analysis:', domAnalysis ? 'provided' : 'not provided');
+    console.log('[ParallaxKey] Network Requests:', networkRequests?.length || 0);
+    console.log('[ParallaxKey] Network Responses:', networkResponses?.length || 0);
+
     if (this.status === 'scanning') {
       throw new Error('Scan already in progress');
     }
-    
+
     this.status = 'scanning';
     const startTime = Date.now();
-    const domain = extractDomain(url);
-    const environment = detectEnvironment(url, domAnalysis?.meta);
-    
-    console.log('[VaultGuard] Domain:', domain);
-    console.log('[VaultGuard] Environment:', environment);
+    const domain = getDomain(url);
+    const environment = detectEnvironment(url);
+
+    console.log('[ParallaxKey] Domain:', domain);
+    console.log('[ParallaxKey] Environment:', environment);
 
     const ctx: ScanContext = {
       url,
@@ -71,23 +67,23 @@ export class ScannerEngine {
 
     const allVulns: Vulnerability[] = [];
     const enabledScanners = this.scanners.filter(s => s.isEnabled());
-    
-    console.log('[VaultGuard] Running', enabledScanners.length, 'scanners');
+
+    console.log('[ParallaxKey] Running', enabledScanners.length, 'scanners');
 
     for (const scanner of enabledScanners) {
       try {
-        console.log('[VaultGuard] Running scanner:', scanner.name);
+        console.log('[ParallaxKey] Running scanner:', scanner.name);
         await scanner.initialize();
         const result = await scanner.scan(ctx);
-        console.log('[VaultGuard]', scanner.name, 'found', result.vulnerabilities.length, 'issues');
+        console.log('[ParallaxKey]', scanner.name, 'found', result.vulnerabilities.length, 'issues');
         allVulns.push(...result.vulnerabilities);
         await scanner.cleanup();
       } catch (e: any) {
-        console.error('[VaultGuard] Scanner', scanner.name, 'failed:', e.message);
+        console.error('[ParallaxKey] Scanner', scanner.name, 'failed:', e.message);
       }
     }
 
-    console.log('[VaultGuard] Total vulnerabilities found:', allVulns.length);
+    console.log('[ParallaxKey] Total vulnerabilities found:', allVulns.length);
 
     // Calculate summary
     const summary: ScanSummary = {
@@ -99,37 +95,45 @@ export class ScannerEngine {
         low: 0,
         info: 0
       },
+      byCategory: {},
       riskScore: 0,
       grade: 'A'
     };
-    
+
     allVulns.forEach(v => {
       if (summary.bySeverity[v.severity] !== undefined) {
         summary.bySeverity[v.severity]++;
       }
+      summary.byCategory[v.category] = (summary.byCategory[v.category] || 0) + 1;
     });
-    
-    summary.riskScore = calculateRiskScore(allVulns);
-    summary.grade = getGrade(summary.riskScore);
+
+    // Calculate risk score
+    summary.riskScore = Math.min(100, allVulns.reduce((acc, v) => acc + severityToScore(v.severity) * 10, 0));
+    summary.grade = this.getGrade(summary.riskScore);
 
     this.currentScan = {
       id: generateId(),
       url,
       domain,
-      scanType: options.type,
-      status: 'completed',
-      startTime,
-      endTime: Date.now(),
-      environment,
+      timestamp: startTime,
       vulnerabilities: allVulns,
-      summary
+      summary,
+      environment
     };
 
     this.status = 'idle';
-    
-    console.log('[VaultGuard] Scan complete. Summary:', summary);
-    
+
+    console.log('[ParallaxKey] Scan complete. Summary:', summary);
+
     return this.currentScan;
+  }
+
+  private getGrade(riskScore: number): string {
+    if (riskScore === 0) return 'A';
+    if (riskScore < 20) return 'B';
+    if (riskScore < 40) return 'C';
+    if (riskScore < 60) return 'D';
+    return 'F';
   }
 }
 
