@@ -1,5 +1,5 @@
-// VaultGuard Content Script
-console.log('[VaultGuard] Content script loaded');
+// ParallaxKey Content Script
+console.log('[ParallaxKey] Content script loaded');
 
 interface DOMData {
   scripts: { src?: string; content?: string }[];
@@ -62,7 +62,7 @@ function analyze(): DOMData {
     });
   } catch (e) { console.log('[VG] forms error:', e); }
 
-  console.log('[VaultGuard] Analysis:', {
+  console.log('[ParallaxKey] Analysis:', {
     scripts: data.scripts.length,
     localStorage: data.localStorage.length,
     sessionStorage: data.sessionStorage.length,
@@ -84,4 +84,4 @@ try {
   chrome.runtime.sendMessage({ type: 'CONTENT_READY' }).catch(() => {});
 } catch (e) {}
 
-console.log('[VaultGuard] Content script ready');
+console.log('[ParallaxKey] Content script ready');

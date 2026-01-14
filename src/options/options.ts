@@ -1,2 +1,2 @@
 // Options page
-console.log('VaultGuard Options loaded');
+console.log('ParallaxKey Options loaded');

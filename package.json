@@ -1,5 +1,5 @@
 {
-  "name": "vaultguard",
+  "name": "parallaxkey",
   "version": "1.0.0",
   "scripts": {
     "build": "npm run tailwind && node build.js",

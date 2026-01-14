@@ -1,5 +1,5 @@
-// VaultGuard Service Worker
-console.log('[VaultGuard] Starting...');
+// ParallaxKey Service Worker
+console.log('[ParallaxKey] Starting...');
 
 // Types
 interface Vulnerability {
@@ -111,8 +111,32 @@ function scanStorage(items: { key: string; value: string }[], type: string): Vul
 }
 
 async function runScan(tabId: number, url: string): Promise<ScanResult> {
-  console.log('[VaultGuard] Scanning:', url);
+  console.log('[ParallaxKey] Scanning:', url);
   const vulns: Vulnerability[] = [];
+
+  // Check if page is reachable
+  try {
+    const tab = await chrome.tabs.get(tabId);
+    if (tab.status !== 'complete') {
+      vulns.push({
+        id: genId(),
+        severity: 'medium',
+        title: 'Page not fully loaded',
+        description: 'Page may still be loading or incomplete',
+        location: url,
+        evidence: `Tab status: ${tab.status}`
+      });
+    }
+  } catch (e) {
+    vulns.push({
+      id: genId(),
+      severity: 'medium',
+      title: 'Page access error',
+      description: 'Could not access page information - may be unreachable',
+      location: url,
+      evidence: 'Tab access failed'
+    });
+  }
 
   // Get DOM data
   let domData: DOMData | null = null;
@@ -131,7 +155,7 @@ async function runScan(tabId: number, url: string): Promise<ScanResult> {
       chrome.tabs.sendMessage(tabId, { type: 'ANALYZE' }, response => {
         clearTimeout(timeout);
         if (chrome.runtime.lastError) {
-          console.log('[VaultGuard] Content script error:', chrome.runtime.lastError.message);
+          console.log('[ParallaxKey] Content script error:', chrome.runtime.lastError.message);
           resolve(null);
         } else {
           resolve(response);
@@ -139,11 +163,21 @@ async function runScan(tabId: number, url: string): Promise<ScanResult> {
       });
     });
   } catch (e) {
-    console.log('[VaultGuard] Could not get DOM:', e);
+    console.log('[ParallaxKey] Could not get DOM:', e);
   }
 
-  if (domData) {
-    console.log('[VaultGuard] Got DOM data');
+  if (!domData) {
+    // Content script failed - add a vulnerability for this
+    vulns.push({
+      id: genId(),
+      severity: 'medium',
+      title: 'Page analysis incomplete',
+      description: 'Could not fully analyze page content - server may be down or page inaccessible',
+      location: url,
+      evidence: 'Content script injection failed'
+    });
+  } else {
+    console.log('[ParallaxKey] Got DOM data');
 
     // Scan scripts
     for (const script of domData.scripts || []) {
@@ -196,7 +230,7 @@ async function runScan(tabId: number, url: string): Promise<ScanResult> {
   else if (score <= 75) summary.grade = 'D';
   else summary.grade = 'F';
 
-  console.log('[VaultGuard] Scan complete:', summary.total, 'issues');
+  console.log('[ParallaxKey] Scan complete:', summary.total, 'issues');
 
   return {
     id: genId(),
@@ -209,8 +243,8 @@ async function runScan(tabId: number, url: string): Promise<ScanResult> {
 
 // Message handler
 chrome.runtime.onMessage.addListener((msg, sender, respond) => {
-  console.log('[VaultGuard] Message received:', msg);
-  console.log('[VaultGuard] Message type:', msg.type);
+  console.log('[ParallaxKey] Message received:', msg);
+  console.log('[ParallaxKey] Message type:', msg.type);
 
   (async () => {
     try {
@@ -264,7 +298,7 @@ chrome.runtime.onMessage.addListener((msg, sender, respond) => {
 
       return { error: 'Unknown message' };
     } catch (e: any) {
-      console.error('[VaultGuard] Error:', e);
+      console.error('[ParallaxKey] Error:', e);
       return { error: e.message };
     }
   })().then(respond);
@@ -285,4 +319,4 @@ chrome.tabs.onRemoved.addListener(tabId => {
   scanning.delete(tabId);
 });
 
-console.log('[VaultGuard] Ready');
+console.log('[ParallaxKey] Ready');

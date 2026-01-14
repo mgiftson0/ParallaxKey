@@ -90,7 +90,7 @@
       @apply flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50;
     }
 
-    /* Custom VaultGuard components */
+    /* Custom ParallaxKey components */
     .cyber-button {
       @apply relative overflow-hidden bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95;
       box-shadow: 0 4px 20px rgba(0, 217, 255, 0.3);

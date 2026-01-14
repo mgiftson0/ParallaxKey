@@ -49,7 +49,7 @@ async function init() {
 }
 
 async function scan() {
-  console.log('[VaultGuard] Scan button clicked');
+  console.log('[ParallaxKey] Scan button clicked');
   const btn = $('scan-btn') as HTMLButtonElement;
   btn.disabled = true;
   $('btn-text').textContent = 'Analyzing Site...';
@@ -57,12 +57,12 @@ async function scan() {
   $('results').classList.add('hidden');
 
   try {
-    console.log('[VaultGuard] Sending START_SCAN message');
+    console.log('[ParallaxKey] Sending START_SCAN message');
     const response = await sendMsg({ type: 'START_SCAN' });
-    console.log('[VaultGuard] Got response:', response);
+    console.log('[ParallaxKey] Got response:', response);
 
     if (response?.error) {
-      console.error('[VaultGuard] Scan error:', response.error);
+      console.error('[ParallaxKey] Scan error:', response.error);
       showEmpty();
     } else if (response?.result) {
       showResults(response.result);
@@ -70,7 +70,7 @@ async function scan() {
       showEmpty();
     }
   } catch (e: any) {
-    console.error('[VaultGuard] Exception:', e);
+    console.error('[ParallaxKey] Exception:', e);
     showEmpty();
   }
 
@@ -210,14 +210,14 @@ function esc(s: string): string {
 }
 
 function sendMsg(msg: any): Promise<any> {
-  console.log('[VaultGuard] Sending message:', msg);
+  console.log('[ParallaxKey] Sending message:', msg);
   return new Promise((resolve) => {
     chrome.runtime.sendMessage(msg, r => {
       if (chrome.runtime.lastError) {
-        console.error('[VaultGuard] Runtime error:', chrome.runtime.lastError.message);
+        console.error('[ParallaxKey] Runtime error:', chrome.runtime.lastError.message);
         resolve({ error: chrome.runtime.lastError.message });
       } else {
-        console.log('[VaultGuard] Message response:', r);
+        console.log('[ParallaxKey] Message response:', r);
         resolve(r);
       }
     });
